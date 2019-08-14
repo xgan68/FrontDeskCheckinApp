@@ -7,6 +7,7 @@ public class PhoneLogin : MonoBehaviour
 {
     public const float SEND_CODE_COOLDOWN_PERIOD = 5f;
     public const string SEND_CODE_TEXT = "发送验证码";
+    public const string INVALID_PHONE_NUMBER_LENGTH_ERROR_MESSAGE = "输入的手机号码位数有误";
 
     [SerializeField]
     private Button m_sendCodeButton;
@@ -19,32 +20,46 @@ public class PhoneLogin : MonoBehaviour
     [SerializeField]
     private InputField m_codeInput;
     [SerializeField]
-    private GameObject m_wrongVerificationCodeText;
+    private Text m_wrongVerificationCodeText;
+    [SerializeField]
+    private Text m_invalidPhoneNumberText;
 
     private void Start()
     {
-       // m_sendCodeButton.interactable = false;
     }
 
     public void OnSendCodeButtonClicked()
     {
         if (IsPhoneNumberValid(m_phoneNumberInput.text))
         {
-            NetworkController.Instance.PostPhoneNumber(m_phoneNumberInput.text, delegate { });
-            StartCoroutine(SendCodeButtonCoolDown());
+            OnWaitForVerifyCodeServerResponse(true);
+            NetworkController.Instance.PostPhoneNumber(m_phoneNumberInput.text, VerifyCodeRequestCallBack);
+        }
+        else
+        {
+            m_invalidPhoneNumberText.text = INVALID_PHONE_NUMBER_LENGTH_ERROR_MESSAGE;
+        }
+    }
+
+    private void OnWaitForVerifyCodeServerResponse(bool isWaiting)
+    {
+        if (isWaiting)
+        {
+            m_sendCodeText.text = "发送中...";
+            m_sendCodeButton.interactable = false;
+        }
+        else
+        {
+            m_sendCodeText.text = SEND_CODE_TEXT;
+            m_sendCodeButton.interactable = true;
         }
     }
 
     public void OnLoginButtonClicked()
     {
-        NetworkController.Instance.PostVerificationCode(m_codeInput.text, ShowWorngCodeText);
+        NetworkController.Instance.PostVerificationCode(m_codeInput.text, LoginRequestCallBack);
     }
-
-    public void ShowWorngCodeText()
-    {
-        m_wrongVerificationCodeText.SetActive(true);
-    }
-
+    
     public void OnCloseButtonClicked()
     {
         this.gameObject.SetActive(false);
@@ -75,7 +90,39 @@ public class PhoneLogin : MonoBehaviour
         {
             isValid = true;
         }
+        else
+        {
+
+        }
 
         return isValid;
+    }
+
+    private void LoginRequestCallBack(int errorCode, string errorMsg)
+    {
+
+        if (errorCode == 0)
+        {
+            m_wrongVerificationCodeText.text = "";
+            //bring up 手环
+        }
+        else
+        {
+            m_wrongVerificationCodeText.text = errorMsg;
+        }
+    }
+
+    private void VerifyCodeRequestCallBack(int errorCode, string errorMsg)
+    {
+        if (errorCode == 0)
+        {
+            m_invalidPhoneNumberText.text = "";
+            StartCoroutine(SendCodeButtonCoolDown());
+        }
+        else
+        {
+            m_invalidPhoneNumberText.text = errorMsg;
+        }
+        OnWaitForVerifyCodeServerResponse(false);
     }
 }
