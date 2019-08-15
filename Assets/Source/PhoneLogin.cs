@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PhoneLogin : MonoBehaviour
+public class PhoneLogin : AUIPage
 {
-    public const float SEND_CODE_COOLDOWN_PERIOD = 5f;
+    public const float SEND_CODE_COOLDOWN_PERIOD = 10f;
     public const string SEND_CODE_TEXT = "发送验证码";
-    public const string INVALID_PHONE_NUMBER_LENGTH_ERROR_MESSAGE = "输入的手机号码位数有误";
+    public const string SENDING_TEXT = "发送中...";
+    public const string INVALID_PHONE_NUMBER_LENGTH_ERROR_MESSAGE = "输入号码的位数有误,请确认后重新输入。";
 
     [SerializeField]
     private Button m_sendCodeButton;
@@ -24,10 +25,6 @@ public class PhoneLogin : MonoBehaviour
     [SerializeField]
     private Text m_invalidPhoneNumberText;
 
-    private void Start()
-    {
-    }
-
     public void OnSendCodeButtonClicked()
     {
         if (IsPhoneNumberValid(m_phoneNumberInput.text))
@@ -41,11 +38,21 @@ public class PhoneLogin : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        m_phoneNumberInput.onValueChanged.AddListener(delegate { OnPhoneNumberInputChanged(); });
+    }
+
+    private void OnEnable()
+    {
+        RefreshUserInputs();
+    }
+
     private void OnWaitForVerifyCodeServerResponse(bool isWaiting)
     {
         if (isWaiting)
         {
-            m_sendCodeText.text = "发送中...";
+            m_sendCodeText.text = SENDING_TEXT;
             m_sendCodeButton.interactable = false;
         }
         else
@@ -57,12 +64,12 @@ public class PhoneLogin : MonoBehaviour
 
     public void OnLoginButtonClicked()
     {
-        NetworkController.Instance.PostVerificationCode(m_codeInput.text, LoginRequestCallBack);
+        NetworkController.Instance.PostVerificationCode(m_phoneNumberInput.text, m_codeInput.text, LoginRequestCallBack);
     }
     
     public void OnCloseButtonClicked()
     {
-        this.gameObject.SetActive(false);
+        Hide();
     }
 
     IEnumerator SendCodeButtonCoolDown()
@@ -100,16 +107,20 @@ public class PhoneLogin : MonoBehaviour
 
     private void LoginRequestCallBack(int errorCode, string errorMsg)
     {
-
         if (errorCode == 0)
         {
-            m_wrongVerificationCodeText.text = "";
-            //bring up 手环
+            OnLoginSuccess();
         }
         else
         {
             m_wrongVerificationCodeText.text = errorMsg;
         }
+    }
+
+    private void OnLoginSuccess()
+    {
+        m_wrongVerificationCodeText.text = "";
+        UIController.Instance.BindWristBandPage.Show();
     }
 
     private void VerifyCodeRequestCallBack(int errorCode, string errorMsg)
@@ -124,5 +135,18 @@ public class PhoneLogin : MonoBehaviour
             m_invalidPhoneNumberText.text = errorMsg;
         }
         OnWaitForVerifyCodeServerResponse(false);
+    }
+
+    private void OnPhoneNumberInputChanged()
+    {
+        OnWaitForVerifyCodeServerResponse(false);
+    }
+
+    private void RefreshUserInputs()
+    {
+        m_wrongVerificationCodeText.text = "";
+        m_invalidPhoneNumberText.text = "";
+        m_phoneNumberInput.text = "";
+        m_codeInput.text = "";
     }
 }

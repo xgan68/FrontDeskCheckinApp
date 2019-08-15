@@ -24,12 +24,40 @@ public class NetworkController : MonoBehaviour
         StartCoroutine(UploadPhoneNumber(form, callback));
     }
 
-    public void PostVerificationCode(string code, System.Action<int, string> callback)
+    public void PostVerificationCode(string phoneNumber, string code, System.Action<int, string> callback)
     {
         WWWForm form = new WWWForm();
-        form.AddField("code", code);
+        form.AddField("phone", phoneNumber);
+        form.AddField("verify_code", code);
 
         StartCoroutine(UploadVerificationCode(form, callback));
+    }
+
+    public void PostQRCodeID(string ID, System.Action<int, string> callback)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("QRCodeID", ID);
+
+        StartCoroutine(UploadQRCodeID(form, callback));
+    }
+
+    IEnumerator UploadQRCodeID(WWWForm form, System.Action<int, string> callback)
+    {
+        string url = "";
+        UnityWebRequest www = UnityWebRequest.Post(url, form);
+
+        yield return www.SendWebRequest();
+        if (www.isNetworkError || www.isHttpError)
+        {
+            callback(99, SERVER_NOT_RESPONDING_ERROR_MESSAGE);
+            Debug.Log(www.error);
+        }
+        else
+        {
+            ServerMessage serverMessage = CreateFromJSON(www.downloadHandler.text);
+            callback(serverMessage.err_code, serverMessage.err_msg);
+            Debug.Log(serverMessage.err_code.ToString() + serverMessage.err_msg);
+        }
     }
 
     private ServerMessage CreateFromJSON(string jsonString)
