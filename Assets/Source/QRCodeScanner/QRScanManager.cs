@@ -5,7 +5,9 @@ using System;
 using UnityEngine.UI;
 
 public class QRScanManager : MonoBehaviour {
-	
+
+    public static Action<string> QRCodeScanSuccess;
+
 	string dataStr;
 	Text t;
 	//	public Renderer PlaneRender;
@@ -20,9 +22,11 @@ public class QRScanManager : MonoBehaviour {
 		EasyCodeScanner.OnScannerMessage += onScannerMessage;
 		EasyCodeScanner.OnScannerEvent += onScannerEvent;
 		EasyCodeScanner.OnDecoderMessage += onDecoderMessage;
-		
-		//Screen.orientation = ScreenOrientation.LandscapeLeft;
-		t = GetComponentInChildren<Text> ();
+
+        QRScanManager.QRCodeScanSuccess += OnQRCodeScanSuccess;
+
+        //Screen.orientation = ScreenOrientation.LandscapeLeft;
+        t = GetComponentInChildren<Text> ();
 	}
 	
 	void OnDestroy() {
@@ -43,15 +47,15 @@ public class QRScanManager : MonoBehaviour {
 
 	public void Scan()
 	{
-		EasyCodeScanner.launchScanner( true, "FEClub", -1, true);
+		EasyCodeScanner.launchScanner(false, "FRAXINUS", -1, false);
 	}
 
 	
 	//Callback when returns from the scanner
 	void onScannerMessage(string data){
 		Debug.Log("EasyCodeScannerExample - onScannerMessage data=:"+data);
-
-		t.text = data;
+        QRCodeScanSuccess(data);
+        t.text = data;
 //		dataStr = data;
 	}
 	
@@ -69,7 +73,14 @@ public class QRScanManager : MonoBehaviour {
         //post data to server
         //bring up welcome window
 	}
-	
-	
-	
+
+    private void OnQRCodeScanSuccess(string ID)
+    {
+        NetworkController.Instance.PostQRCodeID(ID,OnQRCodeIDBinded);
+    }
+
+    private void OnQRCodeIDBinded(int errorCode, string errorMsg)
+    { 
+        
+    }
 }
