@@ -1363,9 +1363,9 @@ GameObject:
   m_Component:
   - component: {fileID: 947101830}
   - component: {fileID: 947101833}
-  - component: {fileID: 947101832}
+  - component: {fileID: 947101831}
   m_Layer: 5
-  m_Name: QRCode
+  m_Name: QRCodeImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1390,7 +1390,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &947101832
+--- !u!114 &947101831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 947101829}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -1410,15 +1410,13 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 4b55bc53bcd6bba40ae34ff3ef86f9cc, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
+  m_Texture: {fileID: 2800000, guid: 4b55bc53bcd6bba40ae34ff3ef86f9cc, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!222 &947101833
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2524,7 +2522,6 @@ MonoBehaviour:
   m_codeInput: {fileID: 1101914454}
   m_wrongVerificationCodeText: {fileID: 796053188}
   m_invalidPhoneNumberText: {fileID: 1187297529}
-  m_QRCodeScannerUI: {fileID: 816790755}
 --- !u!114 &1607415174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2873,9 +2870,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2003936802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8d79e970a00b48bf993de58066839d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 34005e097415be84687b5200df69ed37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_QRCodeImage: {fileID: 947101831}
 --- !u!1 &2007970229
 GameObject:
   m_ObjectHideFlags: 0
@@ -3097,8 +3095,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2060616326}
   - component: {fileID: 2060616325}
+  - component: {fileID: 2060616327}
   m_Layer: 0
-  m_Name: QRScanManager
+  m_Name: QRCodeManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3130,6 +3129,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2060616327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060616324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c23b7861dbaec4f930f56e8704e86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2087369494
 GameObject:
   m_ObjectHideFlags: 0
