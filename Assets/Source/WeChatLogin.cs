@@ -5,21 +5,34 @@ using UnityEngine.UI;
 
 public class WeChatLogin : AUIPage
 {
-    [SerializeField]
-    private RawImage m_QRCodeImage;
 
     private void Start()
     {
-        OnWechatQRCodeUpdated("https://open.weixin.qq.com/connect/confirm?uuid=061ozkkkIyiqxl-r");
+        //OnWechatQRCodeUpdated("https://open.weixin.qq.com/connect/confirm?uuid=061ozkkkIyiqxl-r");
+        WebViewController.ReceiveMsgFromWebView += OnReceiveMsgFromWebView;
     }
 
-    private void OnWechatQRCodeUpdated(string url)
+    public void OnWechatLoginButtonClicked()
     {
-        QRGenerateManger.GenerateQRImage(m_QRCodeImage, url, 256, 256);
+        WebViewController.Instance.LocalHtml();
     }
 
     public void OnPhoneLoginButtonClicked()
     {
         UIController.Instance.PhoneLoginPage.Show();
+    }
+
+    public void OnWeChatLoginSuccess()
+    {
+        UIController.Instance.BindWristBandPage.Show();
+        WebViewController.Instance.Close();
+    }
+
+    public void OnReceiveMsgFromWebView(string msg)
+    {
+        if (msg == "world")
+        {
+            OnWeChatLoginSuccess();
+        }
     }
 }
