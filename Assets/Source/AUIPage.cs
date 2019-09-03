@@ -25,4 +25,9 @@ public class AUIPage : MonoBehaviour
     {
         this.gameObject.SetActive(false);
     }
+
+    public virtual void ClearAll()
+    { 
+        
+    }
 }

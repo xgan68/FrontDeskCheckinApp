@@ -7,7 +7,8 @@ public class NetworkController : MonoBehaviour
 {
     public const string SERVER_NOT_RESPONDING_ERROR_MESSAGE = "服务器无响应";
     public const string GET_REGISER_VERIFY_CODE_URL = "http://152.136.99.117:8088/auth/get_register_verify_code/";
-    public const string  QUICK_LOGIN_URL= "http://152.136.99.117:8088/auth/quick_login/";
+    public const string QUICK_LOGIN_URL= "http://152.136.99.117:8088/auth/quick_login/";
+    public const string BIND_WRIST_BAND_URL = "http://152.136.99.117:8088/auth/bind_wrist_band/";
 
     public static NetworkController Instance;
 
@@ -36,14 +37,14 @@ public class NetworkController : MonoBehaviour
     public void PostQRCodeID(string ID, System.Action<int, string> callback)
     {
         WWWForm form = new WWWForm();
-        form.AddField("QRCodeID", ID);
+        form.AddField("band_id", ID);
 
         StartCoroutine(UploadQRCodeID(form, callback));
     }
 
     IEnumerator UploadQRCodeID(WWWForm form, System.Action<int, string> callback)
     {
-        string url = "";
+        string url = BIND_WRIST_BAND_URL;
         UnityWebRequest www = UnityWebRequest.Post(url, form);
 
         yield return www.SendWebRequest();

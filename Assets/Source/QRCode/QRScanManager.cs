@@ -7,8 +7,10 @@ using UnityEngine.UI;
 public class QRScanManager : MonoBehaviour {
 
     public static Action<string> QRCodeScanSuccess;
+    public static Action<int, string> QRCodeIDBindCallback;
 
-	string dataStr;
+
+    string dataStr;
 	Text t;
 	//	public Renderer PlaneRender;
 	
@@ -76,11 +78,6 @@ public class QRScanManager : MonoBehaviour {
 
     private void OnQRCodeScanSuccess(string ID)
     {
-        NetworkController.Instance.PostQRCodeID(ID,OnQRCodeIDBinded);
-    }
-
-    private void OnQRCodeIDBinded(int errorCode, string errorMsg)
-    { 
-        
+        NetworkController.Instance.PostQRCodeID(ID, QRCodeIDBindCallback);
     }
 }

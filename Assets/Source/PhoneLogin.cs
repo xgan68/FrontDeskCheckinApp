@@ -149,4 +149,10 @@ public class PhoneLogin : AUIPage
         m_phoneNumberInput.text = "";
         m_codeInput.text = "";
     }
+
+    public override void ClearAll()
+    {
+        base.ClearAll();
+        RefreshUserInputs();
+    }
 }

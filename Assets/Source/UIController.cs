@@ -16,7 +16,11 @@ public class UIController : MonoBehaviour
 
     [SerializeField]
     private AUIPage m_bindWristBandPage;
-    public AUIPage BindWristBandPage { get { return m_bindWristBandPage; } } 
+    public AUIPage BindWristBandPage { get { return m_bindWristBandPage; } }
+
+    [SerializeField]
+    private AUIPage m_bindSuccessPage;
+    public AUIPage BindSuccessPage { get { return m_bindSuccessPage; } }
 
     private void Start()
     {
@@ -26,6 +30,16 @@ public class UIController : MonoBehaviour
     public void HideAll()
     {
         m_phoneLoginPage.Hide();
+        m_wechatLoginPage.Hide();
+        m_bindWristBandPage.Hide();
+        m_bindSuccessPage.Hide();
     }
 
+    public void ClearAll()
+    {
+        m_phoneLoginPage.ClearAll();
+        m_wechatLoginPage.ClearAll();
+        m_bindWristBandPage.ClearAll();
+        m_bindSuccessPage.ClearAll();
+    }
 }
