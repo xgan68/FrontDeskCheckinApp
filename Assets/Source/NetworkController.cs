@@ -40,7 +40,6 @@ public class NetworkController : MonoBehaviour
         }
         else
         {
-
             string json = www.downloadHandler.text;
             Debug.Log(www.downloadHandler.text);
             callback(JsonConvert.DeserializeObject<T>(json));

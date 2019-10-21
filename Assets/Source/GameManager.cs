@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Logout()
     {
-        NetworkController.Instance.Get<ServerMessage>(NetworkController.LOGOUT, null);
+        NetworkController.Instance.Get<ServerMessage>(NetworkController.LOGOUT, LogoutCallback);
     }
 
     private void LogoutCallback(ServerMessage response) 
@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Logout Successed!");
         }
         else
-        { 
+        {
             //logout failed
         }
     }

@@ -48,4 +48,10 @@ public class QRScannerUI : AUIPage
         base.ClearAll();
         ClearUI();
     }
+
+    public override void Hide()
+    {
+        base.Hide();
+        ClearUI();
+    }
 }

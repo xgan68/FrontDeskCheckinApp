@@ -8,10 +8,15 @@ public class WeChatLogin : AUIPage
 {
     public static Action WechatLoginSuccess;
 
+    [SerializeField]
+    private GameObject m_webviewMask;
+
     private void Start()
     {
         WebViewController.ReceiveTokenFromWebView += OnReceiveTokenFromWebView;
         WechatLoginSuccess += OnWeChatLoginSuccess;
+        WebViewController.WebviewShowed += OnWebviewShowed;
+        WebViewController.WebviewClosed += OnWebviewClosed;
     }
 
     private void WechatLoginQRCodeURLCallback(WechatLoginURLServerResponse response)
@@ -55,6 +60,22 @@ public class WeChatLogin : AUIPage
         {
             WebViewController.Instance.Close();
         }
+    }
+
+    public void OnWebviewCloseButtonClicked()
+    {
+        m_webviewMask.SetActive(false);
+        WebViewController.Instance.Close();
+    }
+
+    private void OnWebviewShowed()
+    {
+        m_webviewMask.SetActive(true);
+    }
+
+    private void OnWebviewClosed()
+    {
+        m_webviewMask.SetActive(false);
     }
 }
 

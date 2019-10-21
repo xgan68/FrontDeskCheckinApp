@@ -37,6 +37,7 @@ public class UIController : MonoBehaviour
         m_wechatLoginPage.Hide();
         m_bindWristBandPage.Hide();
         m_bindSuccessPage.Hide();
+        m_selectGameSessionPage.Hide();
     }
 
     public void ClearAll()
@@ -45,5 +46,6 @@ public class UIController : MonoBehaviour
         m_wechatLoginPage.ClearAll();
         m_bindWristBandPage.ClearAll();
         m_bindSuccessPage.ClearAll();
+        m_selectGameSessionPage.ClearAll();
     }
 }
