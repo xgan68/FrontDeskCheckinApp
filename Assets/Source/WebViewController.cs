@@ -7,6 +7,7 @@ using System;
 public class WebViewController : MonoBehaviour
 {
     public static Action<string> ReceiveMsgFromWebView;
+    public static Action<string> ReceiveTokenFromWebView;
 
     [Header("距离屏幕上边缘距离")]
     public int top = 0;
@@ -24,14 +25,14 @@ public class WebViewController : MonoBehaviour
         Instance = this;
     }
 
-    void ShowMsg(string info)
+    private void LoginToken(string token)
     {
-        Debug.Log("New Message: " + info);
-        ReceiveMsgFromWebView(info);
+        ReceiveTokenFromWebView(token);
     }
 
     public void Load(string url)
     {
+        ULiteWebView.Ins.RegistJsInterfaceAction("LoginToken", LoginToken);
         ULiteWebView.Ins.Show(top, bottom, left, right);
         ULiteWebView.Ins.LoadUrl(url);
     }
@@ -45,7 +46,6 @@ public class WebViewController : MonoBehaviour
     {
 
         string localUrl = "/ulitewebview_test.html";
-        ULiteWebView.Ins.RegistJsInterfaceAction("ShowMsg", ShowMsg);
         ULiteWebView.Ins.Show(top, bottom, left, right);
         ULiteWebView.Ins.LoadLocal(localUrl);
     }

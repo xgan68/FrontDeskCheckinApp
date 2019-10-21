@@ -19,8 +19,25 @@ public class GameManager : MonoBehaviour
         UIController.Instance.WechatLoginPage.Show();
     }
 
+    public void OnLoginSuccess()
+    {
+        UIController.Instance.SelectGameSessionPage.Show();
+    }
+
     private void Logout()
+    {
+        NetworkController.Instance.Get<ServerMessage>(NetworkController.LOGOUT, null);
+    }
+
+    private void LogoutCallback(ServerMessage response) 
     { 
-        //Post Logout;
+        if (response.err_code == 0)
+        {
+            Debug.Log("Logout Successed!");
+        }
+        else
+        { 
+            //logout failed
+        }
     }
 }

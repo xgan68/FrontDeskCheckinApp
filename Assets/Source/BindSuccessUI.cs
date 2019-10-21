@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class BindSuccessUI : AUIPage
 {
+    public override void Show()
+    {
+        base.Show();
+    }
+
     public void OnScreenTouched()
     {
         GameManager.Instance.ReInitiate();

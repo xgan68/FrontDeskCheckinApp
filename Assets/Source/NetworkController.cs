@@ -2,19 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using Newtonsoft.Json;
 
 public class NetworkController : MonoBehaviour
 {
     public const string SERVER_NOT_RESPONDING_ERROR_MESSAGE = "服务器无响应";
-    public const string GET_REGISER_VERIFY_CODE_URL = "http://152.136.99.117:8088/auth/get_register_verify_code/";
-    public const string QUICK_LOGIN_URL= "http://152.136.99.117:8088/auth/quick_login/";
-    public const string BIND_WRIST_BAND_URL = "http://152.136.99.117:8088/auth/bind_wrist_band/";
+    public const string GET_REGISER_VERIFY_CODE_URL = "http://152.136.99.117/auth/get_register_verify_code/";
+    public const string QUICK_LOGIN_URL= "http://152.136.99.117/auth/quick_login/";
+    public const string BIND_WRIST_BAND_URL = "http://152.136.99.117/auth/bind_wrist_band/";
+    public const string GET_WECHAT_LOGIN_QRCODE_URL = "http://152.136.99.117/auth/wechat_qr_login/";
+    public const string WECHAT_TOKEN_LOGIN = "http://152.136.99.117/auth/wechat_token_login/";
+    public const string GET_AVAILABLE_GAME_SESSIONS = "http://152.136.99.117/game_map/get_available_game_sessions/";
+    public const string LOGOUT = "http://152.136.99.117/auth/logout/";
 
     public static NetworkController Instance;
 
     void Start()
     {
         Instance = this;
+    }
+
+    public void Get<T>(string url, System.Action<T> callback) where T : class
+    {
+        StartCoroutine(DownloadFromServer<T>(url, callback));
+    }
+
+    IEnumerator DownloadFromServer<T>(string url, System.Action<T> callback) where T : class
+    {
+        UnityWebRequest www = UnityWebRequest.Get(url);
+
+        yield return www.SendWebRequest();
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log("HTTP ERROR" + www.error);
+            callback(null);
+            //m_UIController.ShowWarningPopup(Constants.ServerParameter.SERVER_NOT_RESPONDING_ERROR_MESSAGE);
+        }
+        else
+        {
+
+            string json = www.downloadHandler.text;
+            Debug.Log(www.downloadHandler.text);
+            callback(JsonConvert.DeserializeObject<T>(json));
+        }
+    }
+
+    public void Post<T>(string url, WWWForm form, System.Action<T> callback) where T : class 
+    {
+        StartCoroutine(UploadToServer(url, form, callback));
+    }
+
+    IEnumerator UploadToServer<T>(string url, WWWForm form, System.Action<T> callback)
+    {
+        UnityWebRequest www = UnityWebRequest.Post(url, form);
+
+        yield return www.SendWebRequest();
+        if (www.isNetworkError || www.isHttpError)
+        {
+            //Popup warning
+            Debug.Log(www.error);
+        }
+        else
+        {
+            T serverResponse = JsonConvert.DeserializeObject<T>(www.downloadHandler.text);
+            callback(serverResponse);
+        }
     }
 
     public void PostPhoneNumber(string phoneNumber, System.Action<int, string> callback)

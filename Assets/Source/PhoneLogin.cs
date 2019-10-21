@@ -109,7 +109,7 @@ public class PhoneLogin : AUIPage
     {
         if (errorCode == 0)
         {
-            OnLoginSuccess();
+            OnPhoneLoginSuccess();
         }
         else
         {
@@ -117,10 +117,10 @@ public class PhoneLogin : AUIPage
         }
     }
 
-    private void OnLoginSuccess()
+    private void OnPhoneLoginSuccess()
     {
         m_wrongVerificationCodeText.text = "";
-        UIController.Instance.BindWristBandPage.Show();
+        GameManager.Instance.OnLoginSuccess();
     }
 
     private void VerifyCodeRequestCallBack(int errorCode, string errorMsg)

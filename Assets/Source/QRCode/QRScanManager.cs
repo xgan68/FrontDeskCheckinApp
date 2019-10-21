@@ -10,12 +10,14 @@ public class QRScanManager : MonoBehaviour {
     public static Action<int, string> QRCodeIDBindCallback;
 
 
-    string dataStr;
+    public static QRScanManager Instance;
+
+    private string m_gameID;
 	Text t;
 	//	public Renderer PlaneRender;
 	
 	void Start () {
-		dataStr = "";
+        Instance = this;
 		
 		// Initialize EasyCodeScanner
 		EasyCodeScanner.Initialize();
@@ -49,16 +51,20 @@ public class QRScanManager : MonoBehaviour {
 
 	public void Scan()
 	{
-		EasyCodeScanner.launchScanner(false, "FRAXINUS", -1, false);
-	}
+        //OnQRCodeScanSuccess("1234512349");
+        EasyCodeScanner.launchScanner(false, "FRAXINUS", -1, false);
+    }
 
-	
+	public void UpdateGameSessionID(string id)
+    {
+        m_gameID = id;
+    }
+
 	//Callback when returns from the scanner
 	void onScannerMessage(string data){
 		Debug.Log("EasyCodeScannerExample - onScannerMessage data=:"+data);
         QRCodeScanSuccess(data);
         t.text = data;
-//		dataStr = data;
 	}
 	
 	//Callback which notifies an event
@@ -70,7 +76,6 @@ public class QRScanManager : MonoBehaviour {
 	//Callback when decodeImage has decoded the image/texture 
 	void onDecoderMessage(string data){
 		Debug.Log("EasyCodeScannerExample - onDecoderMessage data:"+data);
-		dataStr = data;
 
         //post data to server
         //bring up welcome window
@@ -78,6 +83,17 @@ public class QRScanManager : MonoBehaviour {
 
     private void OnQRCodeScanSuccess(string ID)
     {
-        NetworkController.Instance.PostQRCodeID(ID, QRCodeIDBindCallback);
+        //NetworkController.Instance.PostQRCodeID(ID, QRCodeIDBindCallback);
+        Debug.Log("band_id: " + ID + " game_id: " + m_gameID);
+        WWWForm form = new WWWForm();
+        form.AddField("band_id", ID);
+        form.AddField("game_id", m_gameID);
+
+        NetworkController.Instance.Post<ServerMessage>(NetworkController.BIND_WRIST_BAND_URL, form, QRCodeScanCallback);
+    }
+
+    private void QRCodeScanCallback(ServerMessage response)
+    {
+        QRCodeIDBindCallback(response.err_code, response.err_msg);
     }
 }

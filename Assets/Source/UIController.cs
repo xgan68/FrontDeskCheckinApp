@@ -22,6 +22,10 @@ public class UIController : MonoBehaviour
     private AUIPage m_bindSuccessPage;
     public AUIPage BindSuccessPage { get { return m_bindSuccessPage; } }
 
+    [SerializeField]
+    private AUIPage m_selectGameSessionPage;
+    public AUIPage SelectGameSessionPage { get { return m_selectGameSessionPage; } }
+
     private void Start()
     {
         Instance = this;
