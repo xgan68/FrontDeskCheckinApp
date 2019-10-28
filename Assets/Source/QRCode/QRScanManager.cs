@@ -51,7 +51,7 @@ public class QRScanManager : MonoBehaviour {
 
 	public void Scan()
 	{
-        //OnQRCodeScanSuccess("1234512349");
+        //OnQRCodeScanSuccess("123451234a");
         EasyCodeScanner.launchScanner(false, "FRAXINUS", -1, false);
     }
 

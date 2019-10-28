@@ -10,11 +10,18 @@ public class SelectGameSessionUI : AUIPage
     private GameObject m_gameSessionGamePrefab;
     [SerializeField]
     private ToggleGroup m_gameSessionsToggleGroup;
+    [SerializeField]
+    private GameObject m_preGameSessionsToggleArea;
+    [SerializeField]
+    private GameObject m_inGameSessionsToggleArea;
+    [SerializeField]
+    private GameObject m_endGameSessionsToggleArea;
+    [SerializeField]
+    private GameObject m_unknownGameSessionsToggleArea;
 
     public override void Show()
     {
         base.Show();
-
         NetworkController.Instance.Get<GameSessionsResponse>(NetworkController.GET_AVAILABLE_GAME_SESSIONS, GameSessionsCallback);
     }
 
@@ -28,17 +35,54 @@ public class SelectGameSessionUI : AUIPage
     {
         ClearToggleGroup();
 
+        GameObject toggleArea = m_unknownGameSessionsToggleArea;
+
         for (int i = 0; i < gameSessionInfos.Count; i++)
         {
-            GameSessionToggleItem item = Instantiate(m_gameSessionGamePrefab, m_gameSessionsToggleGroup.transform).GetComponent<GameSessionToggleItem>();
-
+            if (gameSessionInfos[i].status == "p")
+            {
+                toggleArea = m_preGameSessionsToggleArea;
+            }
+            else if (gameSessionInfos[i].status == "s")
+            {
+                toggleArea = m_inGameSessionsToggleArea;
+            }
+            else if (gameSessionInfos[i].status == "c")
+            {
+                toggleArea = m_endGameSessionsToggleArea;
+            }
+            else
+            {
+                toggleArea = m_unknownGameSessionsToggleArea;
+            }
+            
+            GameSessionToggleItem item = Instantiate(m_gameSessionGamePrefab, toggleArea.transform).GetComponent<GameSessionToggleItem>();
             item.Init(gameSessionInfos[i].game_id, gameSessionInfos[i].game_time, gameSessionInfos[i].status, m_gameSessionsToggleGroup);
+
+            Canvas.ForceUpdateCanvases();
+            toggleArea.GetComponent<GridLayoutGroup>().enabled = false;
+            toggleArea.GetComponent<GridLayoutGroup>().enabled = true;
         }
     }
 
     private void ClearToggleGroup()
     {
-        foreach (Transform child in m_gameSessionsToggleGroup.transform)
+        foreach (Transform child in m_unknownGameSessionsToggleArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in m_preGameSessionsToggleArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in m_inGameSessionsToggleArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in m_endGameSessionsToggleArea.transform)
         {
             Destroy(child.gameObject);
         }

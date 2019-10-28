@@ -26,8 +26,13 @@ public class WeChatLogin : AUIPage
 
     public void OnWechatLoginButtonClicked()
     {
-        //WebViewController.Instance.Load("https://baidu.com");
+#if UNITY_EDITOR
+        OnReceiveTokenFromWebView("6b1eb3318ff031a5ac09b75d9811b4f6");
+#endif
+
+#if UNITY_IPHONE && !UNITY_EDITOR
         NetworkController.Instance.Get<WechatLoginURLServerResponse>(NetworkController.GET_WECHAT_LOGIN_QRCODE_URL, WechatLoginQRCodeURLCallback);
+#endif
     }
 
     public void OnPhoneLoginButtonClicked()
