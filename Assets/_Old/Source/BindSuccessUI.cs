@@ -12,6 +12,6 @@ public class BindSuccessUI : AUIPage
 
     public void OnScreenTouched()
     {
-        GameManager.Instance.ReInitiate();
+        GameManager1.Instance.ReInitiate();
     }
 }

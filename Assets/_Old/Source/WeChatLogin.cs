@@ -42,7 +42,7 @@ public class WeChatLogin : AUIPage
 
     public void OnWeChatLoginSuccess()
     {
-        GameManager.Instance.OnLoginSuccess();
+        GameManager1.Instance.OnLoginSuccess();
         WebViewController.Instance.Close();
     }
 
@@ -51,7 +51,7 @@ public class WeChatLogin : AUIPage
         Debug.Log("webview test: " + myToken);
         WWWForm form = new WWWForm();
         form.AddField("token", myToken);
-        NetworkController.Instance.Post<ServerMessage>(NetworkController.WECHAT_TOKEN_LOGIN, form, WechatTokenLoginCallback);
+        NetworkController1.Instance.Post<ServerMessage>(NetworkController1.WECHAT_TOKEN_LOGIN, form, WechatTokenLoginCallback);
     }
 
     public void WechatTokenLoginCallback(ServerMessage response)

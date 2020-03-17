@@ -30,7 +30,7 @@ public class PhoneLogin : AUIPage
         if (IsPhoneNumberValid(m_phoneNumberInput.text))
         {
             OnWaitForVerifyCodeServerResponse(true);
-            NetworkController.Instance.PostPhoneNumber(m_phoneNumberInput.text, VerifyCodeRequestCallBack);
+            NetworkController1.Instance.PostPhoneNumber(m_phoneNumberInput.text, VerifyCodeRequestCallBack);
         }
         else
         {
@@ -64,7 +64,7 @@ public class PhoneLogin : AUIPage
 
     public void OnLoginButtonClicked()
     {
-        NetworkController.Instance.PostVerificationCode(m_phoneNumberInput.text, m_codeInput.text, LoginRequestCallBack);
+        NetworkController1.Instance.PostVerificationCode(m_phoneNumberInput.text, m_codeInput.text, LoginRequestCallBack);
     }
     
     public void OnCloseButtonClicked()
@@ -120,7 +120,7 @@ public class PhoneLogin : AUIPage
     private void OnPhoneLoginSuccess()
     {
         m_wrongVerificationCodeText.text = "";
-        GameManager.Instance.OnLoginSuccess();
+        GameManager1.Instance.OnLoginSuccess();
     }
 
     private void VerifyCodeRequestCallBack(int errorCode, string errorMsg)

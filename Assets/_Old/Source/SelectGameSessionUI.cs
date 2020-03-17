@@ -22,7 +22,7 @@ public class SelectGameSessionUI : AUIPage
     public override void Show()
     {
         base.Show();
-        NetworkController.Instance.Get<GameSessionsResponse>(NetworkController.GET_AVAILABLE_GAME_SESSIONS, GameSessionsCallback);
+        NetworkController1.Instance.Get<GameSessionsResponse>(NetworkController1.GET_AVAILABLE_GAME_SESSIONS, GameSessionsCallback);
     }
 
     public override void ClearAll()

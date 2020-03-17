@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
 
-public class NetworkController : MonoBehaviour
+public class NetworkController1 : MonoBehaviour
 {
     public const string SERVER_NOT_RESPONDING_ERROR_MESSAGE = "服务器无响应";
     public const string GET_REGISER_VERIFY_CODE_URL = "http://152.136.99.117/auth/get_register_verify_code/";
@@ -15,7 +15,7 @@ public class NetworkController : MonoBehaviour
     public const string GET_AVAILABLE_GAME_SESSIONS = "http://152.136.99.117/game_map/get_available_game_sessions/";
     public const string LOGOUT = "http://152.136.99.117/auth/logout/";
 
-    public static NetworkController Instance;
+    public static NetworkController1 Instance;
 
     void Start()
     {

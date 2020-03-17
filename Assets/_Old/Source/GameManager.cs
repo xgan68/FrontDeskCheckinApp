@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager1 : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager1 Instance;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     private void Logout()
     {
-        NetworkController.Instance.Get<ServerMessage>(NetworkController.LOGOUT, LogoutCallback);
+        NetworkController1.Instance.Get<ServerMessage>(NetworkController1.LOGOUT, LogoutCallback);
     }
 
     private void LogoutCallback(ServerMessage response) 

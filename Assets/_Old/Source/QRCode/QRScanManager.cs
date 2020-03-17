@@ -89,7 +89,7 @@ public class QRScanManager : MonoBehaviour {
         form.AddField("band_id", ID);
         form.AddField("game_id", m_gameID);
 
-        NetworkController.Instance.Post<ServerMessage>(NetworkController.BIND_WRIST_BAND_URL, form, QRCodeScanCallback);
+        NetworkController1.Instance.Post<ServerMessage>(NetworkController1.BIND_WRIST_BAND_URL, form, QRCodeScanCallback);
     }
 
     private void QRCodeScanCallback(ServerMessage response)
