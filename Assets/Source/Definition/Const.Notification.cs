@@ -6,6 +6,28 @@ public static partial class Const
 {
     public static class Notification
     {
+        #region Http response
+        public const string PHONE_VERIFY_CODE_SENT = "PhoneVerifyCodeSent";
+        public const string PHONE_VERIFY_CODE_FAILED = "PhoneVerifyCodeFailed";
+        public const string PHONE_LOGIN_SUCCESS = "PhoneLoginSuccess";
+        public const string PHONE_LOGIN_FAILED = "PhoneLoginFailed";
+        public const string GAME_SESSIONS_ARRIVED = "GameSessionsArrived";
+        public const string GAME_SESSIONS_REQUEST_FAILED = "GameSessionRequestFailed";
+
+        #endregion
+
+        #region Login
+        public const string REQUEST_FOR_VERIFY_CODE = "RequestForVerityCode";
+        public const string PHONE_LOGIN = "PhoneLogin";
+        public const string GET_GAME_SESSIONS = "GetGameSessions";
+        public const string SUBMIT_SELECTED_GAME_ID = "SubmitSelectedGameID";
+        public const string BRING_UP_QR_SCANNER = "BringUpQRScanner";
+        public const string QR_SCAN_SUCCESS = "QRScanSuccess";
+        public const string ID_BIND_SUCCESS = "IdBindSuccess";
+        public const string ID_BIND_FAILED = "IdBindFailed";
+
+        #endregion
+
         #region Http request
         public const string QR_SCAN_LOGIN = "QrScanLogin";
         public const string LOGIN_SUCCESS = "LoginSuccess";

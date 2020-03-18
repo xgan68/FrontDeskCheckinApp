@@ -6,13 +6,10 @@ public static partial class Const
 {
     public static class UIFormNames
     {
-        public const string UI_FORM_PATH = "";
-
-        public const string LOGIN_FORM = UI_FORM_PATH + "LoginForm";
-        public const string PRE_GAME_FORM = UI_FORM_PATH + "PreGameForm";
-        public const string TRAVEL_ASSITANT_MODE_FORM = UI_FORM_PATH + "TravelAssistantModeForm";
-        public const string USER_INFORMATION_FORM = UI_FORM_PATH + "UserInfoForm";
-        public const string HINT_FORM = UI_FORM_PATH + "HintForm";
-        public const string GIVE_LIKE_FORM = UI_FORM_PATH + "GiveLikeForm";
+        public const string WECHAT_LOGIN_FORM_NORMAL = "WechatLoginForm_Normal";
+        public const string PHONE_LOGIN_FORM_NORMAL = "PhoneLoginForm_Normal";
+        public const string GAME_SESSION_FORM_NORMAL = "GameSessionForm_Normal";
+        public const string ID_BINDING_FORM_NORMAL = "IdBindingForm_Normal";
+        public const string BIND_SUCCESS_FORM_NORMAL = "BindSuccessForm_Normal";
     }
 }

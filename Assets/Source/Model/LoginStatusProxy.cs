@@ -25,6 +25,6 @@ public class LoginStatusProxy : Proxy, IProxy, IResponder
     public void OnFault(object _data)
     {
         Debug.Log("Not Log in yet");
-        AppFacade.instance.SendNotification(Const.Notification.LOAD_UI_ROOT_FORM, Const.UIFormNames.LOGIN_FORM);
+       //AppFacade.instance.SendNotification(Const.Notification.LOAD_UI_ROOT_FORM, Const.UIFormNames.LOGIN_FORM);
     }
 }

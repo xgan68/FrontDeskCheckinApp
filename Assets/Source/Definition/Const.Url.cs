@@ -6,8 +6,17 @@ public static partial class Const
 {
     public static class Url
     {
-
         public const string HTTP_SERVER_ADDRESS = "http://152.136.99.117";
+
+        public const string REQUEST_FOR_VERIFY_CODE = HTTP_SERVER_ADDRESS + "/auth/get_register_verify_code/";
+        public const string PHONE_LOGIN = HTTP_SERVER_ADDRESS + "/auth/quick_login/";
+        public const string GET_GAME_SESSIONS = HTTP_SERVER_ADDRESS + "/game_map/get_available_game_sessions/";
+        public const string ID_BINGDING = HTTP_SERVER_ADDRESS + "/auth/bind_wrist_band/";
+       
+       
+
+
+        //_outdated
         public const string WEB_SOCKET_HOST_URI = "http://www.fraxinusmothership.cn";
         public const string WEB_SOCKET_SERVER_ADDRESS = "ws://www.fraxinusmothership.cn/ws/player/";
 

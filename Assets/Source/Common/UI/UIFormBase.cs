@@ -31,6 +31,10 @@ public abstract class UIFormBase : MonoBehaviour
     public virtual void Hide()
     {
         this.gameObject.SetActive(false);
+        foreach (var uiView in m_loadUiViews)
+        {
+            uiView.Hide();
+        }
     }
 
     public virtual void LoadView(UIViewBase m_uiViewBase)

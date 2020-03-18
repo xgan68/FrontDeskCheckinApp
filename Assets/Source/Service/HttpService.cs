@@ -36,7 +36,7 @@ public class HttpService
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
         {
-            //_callback((new HttpResponse(-99, www.error) as T));
+            _callback((new HttpResponse(-99, www.error) as T));
         }
         else
         {
@@ -52,7 +52,7 @@ public class HttpService
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
         {
-            //_callback(new HttpResponse(-99, www.error));
+            _callback(new HttpResponse(-99, www.error) as T);
             //Throw NetworkError Exception
             Debug.Log(www.error);
         }

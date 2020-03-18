@@ -7,7 +7,7 @@ using PureMVC.Interfaces;
 public class AppFacade : Facade, IFacade
 {
     public const string STARTUP = "Startup";
-    public const string LOGIN = "login";
+    public const string LOGIN = "Login";
 
     private static AppFacade m_instance;
 
@@ -26,10 +26,19 @@ public class AppFacade : Facade, IFacade
     {
         base.InitializeController();
         RegisterCommand(STARTUP, typeof(StartupCommand));
+        RegisterCommand(Const.Notification.LOAD_UI_ROOT_FORM, typeof(UICommand));
+        RegisterCommand(Const.Notification.LOAD_UI_FORM, typeof(UICommand));
+        RegisterCommand(Const.Notification.GO_TO_HOME_FORM, typeof(UICommand));
+        RegisterCommand(Const.Notification.REQUEST_FOR_VERIFY_CODE, typeof(PhoneLoginCommand));
+        RegisterCommand(Const.Notification.PHONE_LOGIN, typeof(PhoneLoginCommand));
+        RegisterCommand(Const.Notification.GET_GAME_SESSIONS, typeof(GameSessionCommand));
+        RegisterCommand(Const.Notification.SUBMIT_SELECTED_GAME_ID, typeof(IdBindingCommand));
+        RegisterCommand(Const.Notification.BRING_UP_QR_SCANNER, typeof(IdBindingCommand));
     }
 
     public void startup()
     {
         SendNotification(STARTUP);
+        SendNotification(Const.Notification.LOAD_UI_ROOT_FORM, Const.UIFormNames.WECHAT_LOGIN_FORM_NORMAL);
     }
 }
