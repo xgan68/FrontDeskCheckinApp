@@ -56,3 +56,6 @@ MonoBehaviour:
   - m_uiView:
       m_AssetGUID: 95288e0c4dad6491b93f931128cf9f87
     m_layer: 1
+  - m_uiView:
+      m_AssetGUID: 46c8ea85a6ce74c21b2516f12842fbff
+    m_layer: 1

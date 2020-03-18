@@ -11,5 +11,6 @@ public class ModelPreCommand : SimpleCommand
         Facade.RegisterProxy(new PhoneLoginProxy());
         Facade.RegisterProxy(new GameSessionProxy());
         Facade.RegisterProxy(new IdBindingProxy());
+        Facade.RegisterProxy(new LogoutProxy());
     }
 }

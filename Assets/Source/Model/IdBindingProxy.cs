@@ -41,7 +41,7 @@ public class IdBindingProxy : Proxy, IProxy, IResponder
 #endif
 
 #if UNITY_EDITOR
-        OnScanSuccess("20190318e");
+        OnScanSuccess("20190318g");
 #endif
     }
 

@@ -36,6 +36,7 @@ public class GameSessionViewMediator : Mediator, IMediator
                 OnGameSessionsArrived(vo as List<SessionInfoVO>);
                 break;
             case Const.Notification.GAME_SESSIONS_REQUEST_FAILED:
+                SendNotification(Const.Notification.POP_WARNING, new PopupWarningVO(Const.Notification.GO_TO_HOME_FORM, vo as string));
                 break;
         }
     }
@@ -46,7 +47,7 @@ public class GameSessionViewMediator : Mediator, IMediator
     }
 
     private void OnGameSessionsArrived(List<SessionInfoVO> _sessionInfoVOs)
-    { 
+    {
         foreach(SessionInfoVO _vo in _sessionInfoVOs)
         {
             m_gameSessionView.LoadGameSessionItem(_vo);

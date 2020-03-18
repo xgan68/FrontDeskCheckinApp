@@ -28,12 +28,15 @@ public class AppFacade : Facade, IFacade
         RegisterCommand(STARTUP, typeof(StartupCommand));
         RegisterCommand(Const.Notification.LOAD_UI_ROOT_FORM, typeof(UICommand));
         RegisterCommand(Const.Notification.LOAD_UI_FORM, typeof(UICommand));
+        RegisterCommand(Const.Notification.POP_WARNING, typeof(UICommand));
         RegisterCommand(Const.Notification.GO_TO_HOME_FORM, typeof(UICommand));
+        RegisterCommand(Const.Notification.BACK_TO_LAST_FORM, typeof(UICommand));
         RegisterCommand(Const.Notification.REQUEST_FOR_VERIFY_CODE, typeof(PhoneLoginCommand));
         RegisterCommand(Const.Notification.PHONE_LOGIN, typeof(PhoneLoginCommand));
         RegisterCommand(Const.Notification.GET_GAME_SESSIONS, typeof(GameSessionCommand));
         RegisterCommand(Const.Notification.SUBMIT_SELECTED_GAME_ID, typeof(IdBindingCommand));
         RegisterCommand(Const.Notification.BRING_UP_QR_SCANNER, typeof(IdBindingCommand));
+        RegisterCommand(Const.Notification.LOGOUT, typeof(LogoutCommand));
     }
 
     public void startup()

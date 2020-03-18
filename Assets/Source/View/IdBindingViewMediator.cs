@@ -33,6 +33,7 @@ public class IdBindingViewMediator : Mediator, IMediator
         {
             case Const.Notification.ID_BIND_SUCCESS:
                 SendNotification(Const.Notification.LOAD_UI_FORM, Const.UIFormNames.BIND_SUCCESS_FORM_NORMAL);
+                SendNotification(Const.Notification.LOGOUT);
                 break;
             case Const.Notification.ID_BIND_FAILED:
                 OnIdBindFailed(vo as string);

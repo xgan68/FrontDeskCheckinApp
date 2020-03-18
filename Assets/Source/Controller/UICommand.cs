@@ -26,6 +26,9 @@ public class UICommand : SimpleCommand
             case Const.Notification.GO_TO_HOME_FORM:
                 UIManager.instance.ShowHomeForm();
                 break;
+            case Const.Notification.POP_WARNING:
+                UIManager.instance.PopWarning(obj as PopupWarningVO);
+                break;
         }
     }
 }

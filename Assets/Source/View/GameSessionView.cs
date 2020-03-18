@@ -25,6 +25,8 @@ public class GameSessionView : UIViewBase
     [SerializeField]
     private Button m_nextButton;
 
+    private List<GameObject> m_loadedToggleItems = new List<GameObject>();
+
     void Awake()
     {
         AppFacade.instance.RegisterMediator(new GameSessionViewMediator(this));
@@ -76,6 +78,8 @@ public class GameSessionView : UIViewBase
         Canvas.ForceUpdateCanvases();
         toggleArea.GetComponent<GridLayoutGroup>().enabled = false;
         toggleArea.GetComponent<GridLayoutGroup>().enabled = true;
+
+        m_loadedToggleItems.Add(item.gameObject);
     }
 
     public string GetSelectedSession()
@@ -92,7 +96,36 @@ public class GameSessionView : UIViewBase
 
     private void ClearUI()
     {
-
+        while(m_loadedToggleItems.Count > 0)
+        {
+            GameObject temp = m_loadedToggleItems[0];
+            m_loadedToggleItems.RemoveAt(0);
+            Destroy(temp);
+        }
     }
 
+    /*
+    private void ClearToggleGroup()
+    {
+        foreach (Transform child in m_unknownGameSessionsToggleArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in m_preGameSessionsToggleArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in m_inGameSessionsToggleArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (Transform child in m_endGameSessionsToggleArea.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+    */
 }

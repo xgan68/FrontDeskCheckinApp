@@ -15,6 +15,8 @@ public class UIManager : MonoBehaviour
     private Transform m_UIContentRoot;
     [SerializeField]
     private Transform m_UIPopupRoot;
+    [SerializeField]
+    private WarningPopupView m_warningPopupView;
 
     private string m_currentFormName = "";
     private GameObject m_uiRoot;
@@ -73,6 +75,12 @@ public class UIManager : MonoBehaviour
         {
             ShowForm(m_homeFormName, true);
         }
+    }
+
+    public void PopWarning(PopupWarningVO _vo)
+    {
+        m_warningPopupView.Show();
+        m_warningPopupView.UpdatePopupwarningVO(_vo);
     }
     
     private void LoadForm(string _formName)
