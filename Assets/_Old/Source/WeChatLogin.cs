@@ -31,7 +31,7 @@ public class WeChatLogin : AUIPage
 #endif
 
 #if UNITY_IPHONE && !UNITY_EDITOR
-        NetworkController.Instance.Get<WechatLoginURLServerResponse>(NetworkController.GET_WECHAT_LOGIN_QRCODE_URL, WechatLoginQRCodeURLCallback);
+        NetworkController1.Instance.Get<WechatLoginURLServerResponse>(NetworkController1.GET_WECHAT_LOGIN_QRCODE_URL, WechatLoginQRCodeURLCallback);
 #endif
     }
 

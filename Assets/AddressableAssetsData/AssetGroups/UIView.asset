@@ -21,12 +21,20 @@ MonoBehaviour:
     m_Address: WeChatLoginView
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 46c8ea85a6ce74c21b2516f12842fbff
+    m_Address: NavigationBarView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 574d7a6adf0974a5c99a3937fb181e58
     m_Address: IdBindingView
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 95288e0c4dad6491b93f931128cf9f87
     m_Address: PhoneLoginView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3ca309a16fb94cb4bf4581169f2f782
+    m_Address: BindSuccessView
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: b5c7b862d57f346fd97ea209ffbbd732

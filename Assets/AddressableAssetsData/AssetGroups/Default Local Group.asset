@@ -16,15 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 0e70c291de862461ca3649243fe1d298
-  m_SerializeEntries:
-  - m_GUID: 46c8ea85a6ce74c21b2516f12842fbff
-    m_Address: NavigationBarView
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: a3ca309a16fb94cb4bf4581169f2f782
-    m_Address: BindSuccessView
-    m_ReadOnly: 0
-    m_SerializedLabels: []
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 024944a3c8a5c4c6db4bc2bc3e44ddbb, type: 2}
   m_SchemaSet:
