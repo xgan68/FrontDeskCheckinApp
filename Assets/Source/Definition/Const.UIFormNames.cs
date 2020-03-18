@@ -11,5 +11,6 @@ public static partial class Const
         public const string GAME_SESSION_FORM_NORMAL = "GameSessionForm_Normal";
         public const string ID_BINDING_FORM_NORMAL = "IdBindingForm_Normal";
         public const string BIND_SUCCESS_FORM_NORMAL = "BindSuccessForm_Normal";
+        public const string ADMIN_LOGIN_FORM = "AdminLoginForm";
     }
 }

@@ -37,6 +37,7 @@ public class AppFacade : Facade, IFacade
         RegisterCommand(Const.Notification.SUBMIT_SELECTED_GAME_ID, typeof(IdBindingCommand));
         RegisterCommand(Const.Notification.BRING_UP_QR_SCANNER, typeof(IdBindingCommand));
         RegisterCommand(Const.Notification.LOGOUT, typeof(LogoutCommand));
+        RegisterCommand(Const.Notification.SWITCH_MODE, typeof(ModeCommand));
     }
 
     public void startup()

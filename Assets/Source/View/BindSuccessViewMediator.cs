@@ -34,6 +34,8 @@ public class BindSuccessViewMediator : Mediator, IMediator
 
     private void BackToFirstStep()
     {
+
+        SendNotification(Const.Notification.LOGOUT);
         SendNotification(Const.Notification.GO_TO_HOME_FORM);
     }
 }

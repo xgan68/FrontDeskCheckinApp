@@ -16,7 +16,19 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 0e70c291de862461ca3649243fe1d298
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1e6055041ceee4edfb71f675fa9b883c
+    m_Address: AdminLoginView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 706b8e645ce214a9b92c187436c3035d
+    m_Address: ModeSelectionView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bff58aefd68f04f248503071a1475689
+    m_Address: AdminLoginForm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 024944a3c8a5c4c6db4bc2bc3e44ddbb, type: 2}
   m_SchemaSet:

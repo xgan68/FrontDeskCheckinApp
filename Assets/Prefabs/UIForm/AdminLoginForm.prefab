@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1412460486369169058}
   - component: {fileID: 6286565690033339404}
   m_Layer: 0
-  m_Name: WechatLoginForm_Normal
+  m_Name: AdminLoginForm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,13 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d280ced86d5c7c4ea2122b25048d57f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_formName: WechatLoginForm_Normal
+  m_formName: AdminLoginForm
   m_uiViewInfos:
   - m_uiView:
       m_AssetGUID: b5c7b862d57f346fd97ea209ffbbd732
     m_layer: 0
   - m_uiView:
-      m_AssetGUID: 16e1627b9ff0041f8a4d373cc69e67b0
+      m_AssetGUID: 1e6055041ceee4edfb71f675fa9b883c
     m_layer: 1
   - m_uiView:
       m_AssetGUID: 706b8e645ce214a9b92c187436c3035d

@@ -27,6 +27,11 @@ public class IdBindingProxy : Proxy, IProxy, IResponder
         SendNotification(Const.Notification.ID_BIND_FAILED, _data);
     }
 
+    public void SetUID(string _uid)
+    {
+        m_uid = _uid;
+    }
+
     public void SubmitSelectedGameID(string _gameID)
     {
         m_selectedGameID = _gameID;

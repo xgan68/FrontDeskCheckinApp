@@ -38,6 +38,7 @@ public static partial class Const
         public const string GO_TO_HOME_FORM = "GoToHomeForm";
         public const string GAME_STARTED = "GameStarted";
         public const string LOAD_SCENE = "LoadScene";
+        public const string SWITCH_MODE = "SwitchMode";
         #endregion
 
 

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1960677244797676191}
   - component: {fileID: 1960677244797676185}
   - component: {fileID: 1960677244797676184}
-  - component: {fileID: 622699908488348612}
+  - component: {fileID: 905717221383274587}
   m_Layer: 5
   m_Name: WhiteBackgroundView
   m_TagString: Untagged
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -74,7 +74,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &622699908488348612
+--- !u!114 &905717221383274587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1960677244797676190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c3fa6fc7776f9d47bd361769c34b7ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a8968ce8a7d64ca99e78f04a4ce22ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_backgroundImage: {fileID: 1960677244797676184}
