@@ -92,7 +92,7 @@ public abstract class UIFormBase : MonoBehaviour
     protected virtual void OnBackGroundViewInstantiated(AsyncOperationHandle<GameObject> _obj)
     {
         UIViewBase uiView = _obj.Result.GetComponent<UIViewBase>();
-        uiView.transform.SetParent(this.transform);
+        uiView.transform.SetParent(this.transform, false);
         uiView.transform.SetAsFirstSibling();
         uiView.Anchor(0, 0, 0);
         LoadView(uiView);
@@ -101,7 +101,7 @@ public abstract class UIFormBase : MonoBehaviour
     protected virtual void OnContentViewInstantiated(AsyncOperationHandle<GameObject> _obj)
     {
         UIViewBase uiView = _obj.Result.GetComponent<UIViewBase>();
-        uiView.transform.SetParent(this.transform);
+        uiView.transform.SetParent(this.transform, false);
         uiView.Anchor(0, 0, 0);
         LoadView(uiView);
     }

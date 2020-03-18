@@ -91,7 +91,7 @@ public class UIManager : MonoBehaviour
     private void OnFormInstantiated(AsyncOperationHandle<GameObject> _obj)
     {
         UIFormBase form = _obj.Result.GetComponent<UIFormBase>();
-        form.transform.SetParent(m_UIContentRoot);
+        form.transform.SetParent(m_UIContentRoot, false);
         form.Anchor(0, 0, 0);
 
         form.Show();
