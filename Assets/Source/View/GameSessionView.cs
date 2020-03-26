@@ -84,6 +84,12 @@ public class GameSessionView : UIViewBase
         toggleArea.GetComponent<GridLayoutGroup>().enabled = true;
 
         m_loadedToggleItems.Add(item.gameObject);
+
+        if (m_nextGameSessionsToggleArea.transform.childCount > 0)
+        {
+            m_nextGameSessionsToggleArea.GetComponentInChildren<Toggle>().isOn = true;
+        
+        }
     }
 
     public string GetSelectedSession()
