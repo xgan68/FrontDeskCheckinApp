@@ -12,5 +12,6 @@ public static partial class Const
         public const string ID_BINDING_FORM_NORMAL = "IdBindingForm_Normal";
         public const string BIND_SUCCESS_FORM_NORMAL = "BindSuccessForm_Normal";
         public const string ADMIN_LOGIN_FORM = "AdminLoginForm";
+        public const string OFFLINE_UID_FORM = "OfflineUidForm";
     }
 }

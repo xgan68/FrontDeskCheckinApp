@@ -10,10 +10,14 @@ public class PhoneLoginViewMediator : Mediator, IMediator
 
     protected PhoneLoginView m_wechatLoginView { get { return m_viewComponent as PhoneLoginView; } }
 
+    private ModeConfigsProxy m_modeConfigProxy;
+
     public PhoneLoginViewMediator(PhoneLoginView _view) : base(NAME, _view)
     {
         m_wechatLoginView.TryRequestVerifyCode += RequestForVerifyCode;
         m_wechatLoginView.LoginButtonClicked += TryPhoneLogin;
+
+        m_modeConfigProxy = AppFacade.instance.RetrieveProxy(ModeConfigsProxy.NAME) as ModeConfigsProxy;
     }
     
     public override System.Collections.Generic.IList<string> ListNotificationInterests()
@@ -43,7 +47,8 @@ public class PhoneLoginViewMediator : Mediator, IMediator
 
             case Const.Notification.PHONE_LOGIN_SUCCESS:
                 m_wechatLoginView.OnLoginSuccess();
-                SendNotification(Const.Notification.LOAD_UI_FORM,Const.UIFormNames.GAME_SESSION_FORM_NORMAL);
+                Debug.Log((vo as PhoneLoginResponse).wb_token + "/" + (vo as PhoneLoginResponse).user_id);
+                SendNotification(Const.Notification.LOAD_UI_FORM, m_modeConfigProxy.GetCurrentModeConfigVO().formAfterUserLogin);
                 break;
             case Const.Notification.PHONE_LOGIN_FAILED:
                 m_wechatLoginView.OnLoginFailed(vo as string);

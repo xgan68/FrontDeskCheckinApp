@@ -19,6 +19,14 @@ public class ModeConfigsProxy : Proxy, IProxy
         m_normalModeConfig.backgroundColor = new Color(1f, 1f, 1f);
         m_adminModeConfig.backgroundColor = new Color(0f, 0f, 0f);
         m_networkDownModeConfig.backgroundColor = new Color(0.7f, 0.7f, 0.7f);
+
+        m_normalModeConfig.modeText = "";
+        m_adminModeConfig.modeText = "管理员模式";
+        m_networkDownModeConfig.modeText = "离线模式";
+
+        m_normalModeConfig.formAfterUserLogin = Const.UIFormNames.GAME_SESSION_FORM_NORMAL;
+        m_adminModeConfig.formAfterUserLogin = Const.UIFormNames.GAME_SESSION_FORM_NORMAL;
+        m_networkDownModeConfig.formAfterUserLogin = Const.UIFormNames.OFFLINE_UID_FORM;
     }
 
     public void SetCurrentMode(Mode _mode)

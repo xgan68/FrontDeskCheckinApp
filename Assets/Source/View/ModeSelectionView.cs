@@ -50,7 +50,7 @@ public class ModeSelectionView : UIViewBase
 
     private void OnOfflineModeButton()
     {
-
+        AppFacade.instance.SendNotification(Const.Notification.SWITCH_MODE, new ModeVO(Mode.Offline));
     }
 
 }

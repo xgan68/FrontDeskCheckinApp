@@ -7,12 +7,13 @@ public class IdBindingDelegate
     private IResponder m_responder;
     private HttpService m_httpService;
 
-    public IdBindingDelegate(IResponder _responder, string _uid, string _gameId, string _bandId)
+    public IdBindingDelegate(IResponder _responder, string _uid, string _wbToken, string _gameId, string _bandId)
     {
         m_responder = _responder;
 
         WWWForm form = new WWWForm();
-        //form.AddField("UID", _vo.phoneNumber);
+        form.AddField("user_id", _uid);
+        form.AddField("wb_token", _wbToken);
         form.AddField("band_id", _bandId);
         form.AddField("game_id", _gameId);
 

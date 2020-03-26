@@ -21,7 +21,7 @@ public class GameSessionDelegate
 
     private void GameSessionCallback(GameSessionResponse _sessionResponse)
     {
-        if (_sessionResponse.err_code == 0)
+        if ((_sessionResponse as HttpResponse).err_code == 0)
         {
             m_responder.OnResult(_sessionResponse.game_sessions_info);
         }

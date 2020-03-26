@@ -9,9 +9,12 @@ public class ModelPreCommand : SimpleCommand
     {
         Facade.RegisterProxy(new VerifyCodeProxy());
         Facade.RegisterProxy(new PhoneLoginProxy());
+        Facade.RegisterProxy(new WechatLoginProxy());
         Facade.RegisterProxy(new GameSessionProxy());
         Facade.RegisterProxy(new IdBindingProxy());
         Facade.RegisterProxy(new LogoutProxy());
+        Facade.RegisterProxy(new LoginProxy());
+        Facade.RegisterProxy(new GameServerLogoutProxy());
         Facade.RegisterProxy(new ModeConfigsProxy());
     }
 }

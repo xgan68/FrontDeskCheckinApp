@@ -19,6 +19,7 @@ public class IdBindingViewMediator : Mediator, IMediator
     {
         return new List<string>()
         {
+            Const.Notification.QR_SCAN_SUCCESS,
             Const.Notification.ID_BIND_SUCCESS,
             Const.Notification.ID_BIND_FAILED
         };
@@ -36,6 +37,9 @@ public class IdBindingViewMediator : Mediator, IMediator
                 break;
             case Const.Notification.ID_BIND_FAILED:
                 OnIdBindFailed(vo as string);
+                break;
+            case Const.Notification.QR_SCAN_SUCCESS:
+                SendNotification(Const.Notification.BIND_ID_NORMAL);
                 break;
         }
     }

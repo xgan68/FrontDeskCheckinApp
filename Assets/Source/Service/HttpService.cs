@@ -36,10 +36,13 @@ public class HttpService
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
         {
-            _callback((new HttpResponse(-99, www.error) as T));
+            var httpResponse = JsonConvert.SerializeObject(new HttpResponse(-99, www.error));
+            T response = JsonConvert.DeserializeObject<T>(httpResponse);
+            _callback(response);
         }
         else
         {
+            Debug.Log(www.downloadHandler.text);
             T serverResponse = JsonConvert.DeserializeObject<T>(www.downloadHandler.text);
             _callback(serverResponse);
         }
@@ -52,9 +55,9 @@ public class HttpService
         yield return www.SendWebRequest();
         if (www.isNetworkError || www.isHttpError)
         {
-            _callback(new HttpResponse(-99, www.error) as T);
-            //Throw NetworkError Exception
-            Debug.Log(www.error);
+            var httpResponse = JsonConvert.SerializeObject(new HttpResponse(-99, www.error));
+            T response = JsonConvert.DeserializeObject<T>(httpResponse);
+            _callback(response);
         }
         else
         {

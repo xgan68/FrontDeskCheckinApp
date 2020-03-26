@@ -33,11 +33,17 @@ public class AppFacade : Facade, IFacade
         RegisterCommand(Const.Notification.BACK_TO_LAST_FORM, typeof(UICommand));
         RegisterCommand(Const.Notification.REQUEST_FOR_VERIFY_CODE, typeof(PhoneLoginCommand));
         RegisterCommand(Const.Notification.PHONE_LOGIN, typeof(PhoneLoginCommand));
+        RegisterCommand(Const.Notification.WECHAT_LOGIN, typeof(WechatLoginCommand));
         RegisterCommand(Const.Notification.GET_GAME_SESSIONS, typeof(GameSessionCommand));
         RegisterCommand(Const.Notification.SUBMIT_SELECTED_GAME_ID, typeof(IdBindingCommand));
         RegisterCommand(Const.Notification.BRING_UP_QR_SCANNER, typeof(IdBindingCommand));
         RegisterCommand(Const.Notification.LOGOUT, typeof(LogoutCommand));
         RegisterCommand(Const.Notification.SWITCH_MODE, typeof(ModeCommand));
+        RegisterCommand(Const.Notification.SET_UID, typeof(IdBindingCommand));
+        RegisterCommand(Const.Notification.BIND_ID_NORMAL, typeof(IdBindingCommand));
+        RegisterCommand(Const.Notification.PHONE_LOGIN_SUCCESS, typeof(IdBindingCommand));
+        RegisterCommand(Const.Notification.SEND_ADMIN_LOGIN, typeof(LoginCommand));
+        RegisterCommand(Const.Notification.GAME_SERVER_LOGOUT, typeof(LogoutCommand));
     }
 
     public void startup()

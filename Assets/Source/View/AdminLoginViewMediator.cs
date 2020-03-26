@@ -34,7 +34,7 @@ public class AdminLoginViewMediator : Mediator, IMediator
 
     private void GotoSelectSessionPage()
     {
-        (AppFacade.instance.RetrieveProxy(IdBindingProxy.NAME) as IdBindingProxy).SetUID(m_adminLoginView.uid);
+        SendNotification(Const.Notification.SET_UID, m_adminLoginView.uid);
         SendNotification(Const.Notification.LOAD_UI_FORM, Const.UIFormNames.GAME_SESSION_FORM_NORMAL);
     }
 }

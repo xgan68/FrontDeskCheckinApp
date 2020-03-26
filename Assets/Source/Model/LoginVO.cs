@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LoginVO
 {
-    public string WristBandID { get; set; }
-    public string UWBTagID { get; set; }
+    public string userName { get; set; }
+    public string password { get; set; }
 
-    public LoginVO(string _wristBandID, string _uwbTagID)
+    public LoginVO()
     {
-        WristBandID = _wristBandID;
-        UWBTagID = _uwbTagID;
+        userName = "";
+        password = "";
     }
 }

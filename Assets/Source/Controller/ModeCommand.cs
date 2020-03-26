@@ -33,7 +33,7 @@ public class ModeCommand : SimpleCommand
                 SendNotification(Const.Notification.LOAD_UI_ROOT_FORM, Const.UIFormNames.ADMIN_LOGIN_FORM);
                 break;
             case Mode.Offline:
-
+                SendNotification(Const.Notification.LOAD_UI_ROOT_FORM, Const.UIFormNames.WECHAT_LOGIN_FORM_NORMAL);
                 break;
         }
     }

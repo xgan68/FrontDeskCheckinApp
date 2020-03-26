@@ -8,6 +8,12 @@ public abstract class UIFormBase : MonoBehaviour
 {
     [SerializeField]
     protected string m_formName;
+    [SerializeField]
+    protected Transform m_backgroundLayer;
+    [SerializeField]
+    protected Transform m_contentLayer;
+    [SerializeField]
+    protected Transform m_fixedUILayer;
     public string formName { get { return m_formName; } }
     [SerializeField]
     protected List<ViewInfo> m_uiViewInfos;
@@ -86,13 +92,17 @@ public abstract class UIFormBase : MonoBehaviour
             {
                 viewInfo.uiView.InstantiateAsync().Completed += OnContentViewInstantiated;
             }
+            else if (viewInfo.layer == UIViewLayer.FixedUI)
+            {
+                viewInfo.uiView.InstantiateAsync().Completed += OnFixedUIViewInstantiated;
+            }
         }
     }
 
     protected virtual void OnBackGroundViewInstantiated(AsyncOperationHandle<GameObject> _obj)
     {
         UIViewBase uiView = _obj.Result.GetComponent<UIViewBase>();
-        uiView.transform.SetParent(this.transform, false);
+        uiView.transform.SetParent(m_backgroundLayer, false);
         uiView.transform.SetAsFirstSibling();
         uiView.Anchor(0, 0, 0);
         LoadView(uiView);
@@ -101,7 +111,15 @@ public abstract class UIFormBase : MonoBehaviour
     protected virtual void OnContentViewInstantiated(AsyncOperationHandle<GameObject> _obj)
     {
         UIViewBase uiView = _obj.Result.GetComponent<UIViewBase>();
-        uiView.transform.SetParent(this.transform, false);
+        uiView.transform.SetParent(m_contentLayer, false);
+        uiView.Anchor(0, 0, 0);
+        LoadView(uiView);
+    }
+
+    protected virtual void OnFixedUIViewInstantiated(AsyncOperationHandle<GameObject> _obj)
+    {
+        UIViewBase uiView = _obj.Result.GetComponent<UIViewBase>();
+        uiView.transform.SetParent(m_fixedUILayer, false);
         uiView.Anchor(0, 0, 0);
         LoadView(uiView);
     }
@@ -121,5 +139,6 @@ public class ViewInfo
 public enum UIViewLayer
 { 
     Background,
-    Content
+    Content,
+    FixedUI
 }

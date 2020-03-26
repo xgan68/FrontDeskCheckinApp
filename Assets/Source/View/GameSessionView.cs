@@ -17,9 +17,9 @@ public class GameSessionView : UIViewBase
     [SerializeField]
     private GameObject m_preGameSessionsToggleArea;
     [SerializeField]
-    private GameObject m_inGameSessionsToggleArea;
+    private GameObject m_nextGameSessionsToggleArea;
     [SerializeField]
-    private GameObject m_endGameSessionsToggleArea;
+    private GameObject m_inGameSessionsToggleArea;
     [SerializeField]
     private GameObject m_unknownGameSessionsToggleArea;
     [SerializeField]
@@ -55,20 +55,24 @@ public class GameSessionView : UIViewBase
     {
         GameObject toggleArea = m_unknownGameSessionsToggleArea;
 
-        switch(_vo.status)
+        if (_vo.next_session)
         {
-            case "p":
-                toggleArea = m_preGameSessionsToggleArea;
-                break;
-            case "s":
-                toggleArea = m_inGameSessionsToggleArea;
-                break;
-            case "c":
-                toggleArea = m_endGameSessionsToggleArea;
-                break;
-            default:
-                toggleArea = m_unknownGameSessionsToggleArea;
-                break;
+            toggleArea = m_nextGameSessionsToggleArea;
+        }
+        else
+        {
+            switch (_vo.status)
+            {
+                case "p":
+                    toggleArea = m_preGameSessionsToggleArea;
+                    break;
+                case "s":
+                    toggleArea = m_inGameSessionsToggleArea;
+                    break;
+                default:
+                    toggleArea = m_unknownGameSessionsToggleArea;
+                    break;
+            }
         }
 
 
@@ -117,12 +121,12 @@ public class GameSessionView : UIViewBase
             Destroy(child.gameObject);
         }
 
-        foreach (Transform child in m_inGameSessionsToggleArea.transform)
+        foreach (Transform child in m_nextGameSessionsToggleArea.transform)
         {
             Destroy(child.gameObject);
         }
 
-        foreach (Transform child in m_endGameSessionsToggleArea.transform)
+        foreach (Transform child in m_inGameSessionsToggleArea.transform)
         {
             Destroy(child.gameObject);
         }

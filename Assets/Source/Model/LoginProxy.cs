@@ -10,44 +10,32 @@ public class LoginProxy : Proxy, IProxy, IResponder
 
     public LoginProxy() : base(NAME) { }
 
-    public void QrScanLogin()
-    {
-#if UNITY_IPHONE && !UNITY_EDITOR
-        EasyCodeScanner.Initialize();
-
-        EasyCodeScanner.OnScannerMessage += onScannerMessage;
-        //EasyCodeScanner.OnScannerEvent += onScannerEvent;
-        //EasyCodeScanner.OnDecoderMessage += onDecoderMessage;
-
-        EasyCodeScanner.launchScanner(false, "FRAXINUS", -1, false);
-#endif
-
-#if UNITY_EDITOR
-        SendLogin(new LoginVO("1234512345", "TestUWB123"));
-#endif
-    }
-
-    private void onScannerMessage(string _data)
-    {
-        Debug.Log("EasyCodeScannerExample - onScannerMessage data=:" + _data);
-
-        SendLogin(new LoginVO(_data, "TestUWB123"));
-    }
-    
     public void SendLogin(object _data)
     {
+        LoginDelegate loginDelegate = new LoginDelegate(this, _data as LoginVO);
+        loginDelegate.LoginService();
+
     }
 
     public void OnResult(object _data)
     {
-        //Debug.Log("Band ID Login Success");
-        AppFacade.instance.SendNotification(Const.Notification.LOGIN_SUCCESS, _data);
+        Debug.Log("login success");
+        SendNotification(Const.Notification.LOGIN_SUCCESS, _data);
+        SendNotification(Const.Notification.CONNECT_TO_WS_SERVER, _data);
     }
 
     public void OnFault(object _data)
     {
-        //Debug.Log(_data as string);
-        AppFacade.instance.SendNotification(Const.Notification.LOGIN_FAIL, _data);
+        SendNotification(Const.Notification.LOGIN_FAIL, _data);
     }
 }
 
+public class TokenRequestResponse : HttpResponse
+{
+    public string ws_token;
+
+    public TokenRequestResponse(int _errCode, string _errMsg, string _token) : base(_errCode, _errMsg)
+    {
+        ws_token = _token;
+    }
+}

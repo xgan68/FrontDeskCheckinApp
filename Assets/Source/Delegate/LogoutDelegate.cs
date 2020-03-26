@@ -10,7 +10,7 @@ public class LogoutDelegate
     public LogoutDelegate(IResponder _responder)
     {
         m_responder = _responder;
-        m_httpService = new HttpService(Const.Url.LOGOUT, HttpRequestType.Get);
+        m_httpService = new HttpService(Const.Url.USER_SERVER_LOGOUT, HttpRequestType.Get);
     }
 
     public void LogoutService()

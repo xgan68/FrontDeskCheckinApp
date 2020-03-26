@@ -6,17 +6,22 @@ using PureMVC.Interfaces;
 
 public class LoginCommand : SimpleCommand
 {
-    public override void Execute(INotification _notification)
+    public override void Execute(INotification notification)
     {
-        object obj = _notification.Body;
+        object obj = notification.Body;
         LoginProxy loginProxy;
         loginProxy = Facade.RetrieveProxy(LoginProxy.NAME) as LoginProxy;
-        string name = _notification.Name;
+        LogoutProxy logoutProxy;
+        logoutProxy = Facade.RetrieveProxy(LogoutProxy.NAME) as LogoutProxy;
+        string name = notification.Name;
 
         switch (name)
         {
-            case Const.Notification.QR_SCAN_LOGIN:
-                loginProxy.QrScanLogin();
+            case Const.Notification.SEND_ADMIN_LOGIN:
+                loginProxy.SendLogin(obj);
+                break;
+            case Const.Notification.LOGOUT:
+                logoutProxy.Logout();
                 break;
         }
     }

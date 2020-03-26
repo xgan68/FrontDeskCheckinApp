@@ -6,7 +6,7 @@ using System;
 
 public class AdminLoginView : UIViewBase
 {
-    public event Action OnNextStepButtonClicked = delegate { };
+    public event Action OnNextStepButtonClicked;
 
     [SerializeField]
     private Text m_signInNextPlayerText;

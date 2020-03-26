@@ -8,11 +8,19 @@ public class IdBindingProxy : Proxy, IProxy, IResponder
 {
     public const string NAME = "IdBindingProxy";
 
-    private string m_selectedGameID = "";
-    private string m_uid = "";
+    public string selectedGameID { get; set; }
+    public string bandID { get; set; }
+    public string uid { get; set; }
+    public string wbToken { get; set; }
 
-    public IdBindingProxy() : base(NAME) { }
-
+    public IdBindingProxy() : base(NAME)
+    {
+        selectedGameID = "";
+        bandID = "";
+        uid = "";
+        wbToken = "";
+    }
+    
     public void Logout()
     {
     }
@@ -27,35 +35,9 @@ public class IdBindingProxy : Proxy, IProxy, IResponder
         SendNotification(Const.Notification.ID_BIND_FAILED, _data);
     }
 
-    public void SetUID(string _uid)
+    public void NormalModeBind(string _gameID, string _bandID)
     {
-        m_uid = _uid;
-    }
-
-    public void SubmitSelectedGameID(string _gameID)
-    {
-        m_selectedGameID = _gameID;
-    }
-
-    public void ScanWristBandID()
-    {
-#if UNITY_IPHONE && !UNITY_EDITOR
-        EasyCodeScanner.Initialize();
-        EasyCodeScanner.OnScannerMessage += OnScanSuccess;
-        EasyCodeScanner.launchScanner(false, "FRAXINUS", -1, false);
-#endif
-
-#if UNITY_EDITOR
-        OnScanSuccess("20190318g");
-#endif
-    }
-
-    private void OnScanSuccess(string _data)
-    {
-        Debug.Log("data=:" + _data + " " + m_selectedGameID);
-        SendNotification(Const.Notification.QR_SCAN_SUCCESS, _data);
-
-        IdBindingDelegate idBindingDelegate = new IdBindingDelegate(this, m_uid, m_selectedGameID, _data);
+        IdBindingDelegate idBindingDelegate = new IdBindingDelegate(this, uid, wbToken, _gameID, _bandID);
         idBindingDelegate.Bind();
     }
 }

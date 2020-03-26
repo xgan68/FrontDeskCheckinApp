@@ -11,15 +11,20 @@ public static partial class Const
         public const string PHONE_VERIFY_CODE_FAILED = "PhoneVerifyCodeFailed";
         public const string PHONE_LOGIN_SUCCESS = "PhoneLoginSuccess";
         public const string PHONE_LOGIN_FAILED = "PhoneLoginFailed";
+        public const string WECHAT_LOGIN_SUCCESS = "WechatLoginSuccess";
+        public const string WECHAT_LOGIN_FAILED = "WechatLoginFailed";
         public const string GAME_SESSIONS_ARRIVED = "GameSessionsArrived";
         public const string GAME_SESSIONS_REQUEST_FAILED = "GameSessionRequestFailed";
         public const string LOGOUT_SUCCESS = "LogoutSuccess";
+        public const string GAME_SERVER_LOGOUT_SUCCESS = "GameServerLogoutSuccess";
+        public const string GAME_SERVER_LOGOUT_FAILED = "GameServerLogoutFailed";
 
         #endregion
 
         #region Login
         public const string REQUEST_FOR_VERIFY_CODE = "RequestForVerityCode";
         public const string PHONE_LOGIN = "PhoneLogin";
+        public const string WECHAT_LOGIN = "WechatLogin";
         public const string GET_GAME_SESSIONS = "GetGameSessions";
         public const string SUBMIT_SELECTED_GAME_ID = "SubmitSelectedGameID";
         public const string BRING_UP_QR_SCANNER = "BringUpQRScanner";
@@ -27,7 +32,10 @@ public static partial class Const
         public const string ID_BIND_SUCCESS = "IdBindSuccess";
         public const string ID_BIND_FAILED = "IdBindFailed";
         public const string LOGOUT = "Logout";
-
+        public const string SET_UID = "SetUid";
+        public const string BIND_ID_NORMAL = "BindIdNormal";
+        public const string SEND_ADMIN_LOGIN = "SendAdminLogin";
+        public const string GAME_SERVER_LOGOUT = "GameServerLogout";
         #endregion
 
         #region Local system
@@ -72,7 +80,7 @@ public static partial class Const
         public const string GAME_CLOSED = "GAME_CLOSED";
 
 
-        public const string SEND_LOGIN = "SendLogin";
+
         public const string CONNECT_TO_WS_SERVER = "ConnectToWsServer";
         public const string SETUP_CONNECTION_WITH_SERVER = "SetupConnectionWithServer";
         #endregion
