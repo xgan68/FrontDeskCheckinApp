@@ -22,7 +22,8 @@ public class LoginViewMediator : Mediator, IMediator
         {
             Const.Notification.LOGIN_SUCCESS,
             Const.Notification.LOGIN_FAIL,
-            Const.Notification.GAME_SERVER_LOGOUT_SUCCESS
+            Const.Notification.GAME_SERVER_LOGOUT_SUCCESS,
+            Const.Notification.GAME_SERVER_LOGOUT
         };
     }
 
@@ -40,6 +41,9 @@ public class LoginViewMediator : Mediator, IMediator
                 OnLoginFailed(vo as string);
                 break;
             case Const.Notification.GAME_SERVER_LOGOUT_SUCCESS:
+                OnLogoutSuccess();
+                break;
+            case Const.Notification.GAME_SERVER_LOGOUT:
                 OnLogoutSuccess();
                 break;
         }

@@ -21,6 +21,10 @@ MonoBehaviour:
     m_Address: PhoneLoginForm_Normal
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 1538b6b2b80aa4bbbbf1d2f9e0829b31
+    m_Address: OfflineUidForm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   - m_GUID: 285766622fe8b436d809e758fb3405de
     m_Address: WechatLoginForm_Normal
     m_ReadOnly: 0
@@ -35,6 +39,10 @@ MonoBehaviour:
     m_SerializedLabels: []
   - m_GUID: aba7016b67e3842fca9b4cb1e31e059a
     m_Address: BindSuccessForm_Normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bff58aefd68f04f248503071a1475689
+    m_Address: AdminLoginForm
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

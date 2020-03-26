@@ -45,6 +45,8 @@ public class ModeSelectionView : UIViewBase
 
     private void OnAdminModeButton()
     {
+
+        AppFacade.instance.SendNotification(Const.Notification.GAME_SERVER_LOGOUT);
         AppFacade.instance.SendNotification(Const.Notification.SWITCH_MODE, new ModeVO(Mode.Admin));
     }
 
