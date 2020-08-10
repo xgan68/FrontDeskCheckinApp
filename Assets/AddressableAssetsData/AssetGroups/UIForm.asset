@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UIForm
+  m_EditorClassIdentifier: 
+  m_GroupName: UIForm
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 204c5b0bd71f3498493966de786f2fec
+  m_SerializeEntries:
+  - m_GUID: 07705ce59c40c4e1c8c4ce2b7b813854
+    m_Address: PhoneLoginForm_Normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1538b6b2b80aa4bbbbf1d2f9e0829b31
+    m_Address: OfflineUidForm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 285766622fe8b436d809e758fb3405de
+    m_Address: WechatLoginForm_Normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5035ebc24310b4392b1e65d4c2ac50f6
+    m_Address: IdBindingForm_Normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 5a7f4c245a4604a13926f2230f73cda9
+    m_Address: GameSessionForm_Normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aba7016b67e3842fca9b4cb1e31e059a
+    m_Address: BindSuccessForm_Normal
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bff58aefd68f04f248503071a1475689
+    m_Address: AdminLoginForm
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 024944a3c8a5c4c6db4bc2bc3e44ddbb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 63972c076b3c8416daa30a4907bf1743, type: 2}
+    - {fileID: 11400000, guid: 02e47f6c0d32c4acd865c9a94a7a7d8e, type: 2}

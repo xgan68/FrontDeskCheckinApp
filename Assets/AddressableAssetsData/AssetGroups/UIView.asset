@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UIView
+  m_EditorClassIdentifier: 
+  m_GroupName: UIView
+  m_Data:
+    m_SerializedData: []
+  m_GUID: a6a17076b2a9e4a159f082071a8220d2
+  m_SerializeEntries:
+  - m_GUID: 16e1627b9ff0041f8a4d373cc69e67b0
+    m_Address: WeChatLoginView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 1e6055041ceee4edfb71f675fa9b883c
+    m_Address: AdminLoginView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 46c8ea85a6ce74c21b2516f12842fbff
+    m_Address: NavigationBarView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 574d7a6adf0974a5c99a3937fb181e58
+    m_Address: IdBindingView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 706b8e645ce214a9b92c187436c3035d
+    m_Address: ModeSelectionView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 95288e0c4dad6491b93f931128cf9f87
+    m_Address: PhoneLoginView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9725b594121844d0dba9ffec97ea1677
+    m_Address: OfflineUidView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a3ca309a16fb94cb4bf4581169f2f782
+    m_Address: BindSuccessView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: abd141cd9271d477a984d1fd4049a55c
+    m_Address: LoginView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: b5c7b862d57f346fd97ea209ffbbd732
+    m_Address: WhiteBackgroundView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: bb6c0d311bad44028afc8e5a5931905c
+    m_Address: GameSessionView
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 024944a3c8a5c4c6db4bc2bc3e44ddbb, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 179ae3cdceb8e4133b6d6e34a5d5c0fe, type: 2}
+    - {fileID: 11400000, guid: 3cc0ed07bc2ae4e1ea92d879894043c2, type: 2}
